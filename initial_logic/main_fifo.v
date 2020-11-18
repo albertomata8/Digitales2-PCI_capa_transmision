@@ -71,7 +71,7 @@ module main_fifo #(
                 end
             end
             if (wr_enable && ~rd_enable && ~full_fifo_main_reg) cnt <= cnt+1'b1;
-            else if (~wr_enable && rd_enable) cnt <= cnt-1'b1;
+            else if (~wr_enable && rd_enable && ~empty_fifo) cnt <= cnt-1'b1;
 
         end
     end

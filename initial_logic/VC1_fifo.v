@@ -19,7 +19,7 @@ module VC1_fifo #(
     reg [data_width-1:0] mem [0:size_fifo-1];
     reg [address_width-1:0] wr_ptr;
     reg [address_width-1:0] rd_ptr;
-    reg [address_width:0] cnt;
+    reg [address_width-1:0] cnt;
     wire full_fifo_VC1_reg;
 
     integer i;

@@ -19,7 +19,7 @@ module VC0_fifo #(
     reg [data_width-1:0] mem [0:size_fifo-1];
     reg [address_width-1:0] wr_ptr;
     reg [address_width-1:0] rd_ptr;
-    reg [address_width:0] cnt;
+    reg [address_width-1:0] cnt;
     wire full_fifo_VC0_reg;
 
     integer i;
@@ -65,7 +65,14 @@ module VC0_fifo #(
                      rd_ptr <= rd_ptr+1;
                 end
                 else data_out_VC0 <=0;
-
+                
+                //case ({wr_enable, rd_enable})
+                //    2'b00: cnt <= cnt;
+                //    2'b01: cnt <= cnt-1;
+                //    2'b10: cnt <= cnt+1;
+                //    2'b11: cnt <= cnt;
+                //    default: cnt <= cnt;
+                //endcase
 
             end
             else if (reset == 1 && init == 1 && full_fifo_VC0_reg) begin
