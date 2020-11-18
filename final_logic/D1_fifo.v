@@ -6,11 +6,11 @@ module D1_fifo #(
             input clk, reset_L, wr_enable, rd_enable, init,
             input [data_width-1:0] data_in,
             input [3:0] Umbral_D1,
-            output full_fifo_D1,
-            output empty_fifo_D1,
-            output almost_full_fifo_D1,
-            output almost_empty_fifo_D1,
-            output error_D1,
+            output reg full_fifo_D1,
+            output reg empty_fifo_D1,
+            output reg almost_full_fifo_D1,
+            output reg almost_empty_fifo_D1,
+            output reg error_D1,
             output reg [data_width-1:0] data_out_D1
             );
 
@@ -22,11 +22,23 @@ module D1_fifo #(
 
     wire full_fifo_D1_reg;
 
-    assign full_fifo_D1 = (cnt == size_fifo);
-    assign empty_fifo_D1 = (cnt == 0);  
-    assign error_D1 = (cnt > size_fifo);
-    assign almost_empty_fifo_D1 = (cnt == 1);
-    assign almost_full_fifo_D1 = (cnt >= size_fifo-Umbral_D1 && cnt < size_fifo );
+    always@(*)begin
+        if (reset_L == 0 || init == 0) begin
+            full_fifo_D1 = 0;
+            empty_fifo_D1 = 1;
+            error_D1 = 0;
+            almost_empty_fifo_D1 = 0;
+            almost_full_fifo_D1 = 0;
+        end
+        else begin
+            full_fifo_D1 = (cnt == size_fifo);
+            empty_fifo_D1 = (cnt == 0);                          
+            error_D1 = (cnt > size_fifo);                        
+            almost_empty_fifo_D1 = (cnt == Umbral_D1);         
+            almost_full_fifo_D1 = (cnt >= size_fifo-Umbral_D1 && cnt < size_fifo); 
+        end
+        
+    end         
     assign  full_fifo_D1_reg = full_fifo_D1;
 
     integer i;

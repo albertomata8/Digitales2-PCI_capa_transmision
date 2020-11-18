@@ -6,11 +6,11 @@ module main_fifo #(
             input clk, reset, wr_enable, rd_enable,init,
             input [data_width-1:0] data_in,
             input [3:0] Umbral_Main,
-            output full_fifo,
-            output empty_fifo,
-            output almost_full_fifo,
-            output almost_empty_fifo,
-            output error,
+            output reg full_fifo,
+            output reg empty_fifo,
+            output reg almost_full_fifo,
+            output reg almost_empty_fifo,
+            output reg error,
             output reg [data_width-1:0] data_out
             );
 
@@ -20,13 +20,24 @@ module main_fifo #(
     reg [address_width-1:0] rd_ptr;
     reg [address_width:0] cnt;
     wire full_fifo_main_reg;
-
-    assign full_fifo = (cnt == size_fifo);
-    assign empty_fifo = (cnt == 0);  
-    assign error = (cnt > size_fifo);
-    assign almost_empty_fifo = (cnt == Umbral_Main);
-    assign almost_full_fifo = (cnt == size_fifo-Umbral_Main);
-    assign full_fifo_main_reg = full_fifo;
+    always@(*)begin
+        if (reset == 0 || init == 0) begin
+            full_fifo = 0;
+            empty_fifo = 1;
+            error = 0;
+            almost_empty_fifo = 0;
+            almost_full_fifo = 0;
+        end
+        else begin
+            full_fifo = (cnt == size_fifo);
+            empty_fifo = (cnt == 0);                          
+            error = (cnt > size_fifo);                        
+            almost_empty_fifo = (cnt == Umbral_Main);         
+            almost_full_fifo = (cnt >= size_fifo-Umbral_Main && cnt < size_fifo); 
+        end
+        
+    end                                         
+    assign full_fifo_main_reg = full_fifo;                      
     integer i;
 
 // WRITE //
@@ -46,7 +57,6 @@ module main_fifo #(
                      mem[wr_ptr] <= data_in;
                      wr_ptr <= wr_ptr+1;
                 end
-
                 if (rd_enable == 1) begin
                      data_out <= mem[rd_ptr];
                      rd_ptr <= rd_ptr+1;
