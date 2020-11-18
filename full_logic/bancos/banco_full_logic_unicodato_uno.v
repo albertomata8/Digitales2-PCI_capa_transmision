@@ -1,8 +1,8 @@
 `include "./full_logic/full_logic.v"
 `include "./full_logic/full_logic_synth.v"
-`include "./full_logic/probadores/probador_full_logic_unicodato.v"
+`include "./full_logic/probadores/probador_full_logic_unicodato_uno.v"
 
-module banco_full_logic_unicodato();
+module banco_full_logic_unicodato_uno();
     wire [5:0] data_out_D0, data_out_D1, data_in,data_out_D0_synth, data_out_D1_synth;
     wire [3:0] Umbral_Main, Umbral_VC0, Umbral_VC1,Umbral_D0, Umbral_D1;
     wire [3:0] umbral_MFs, umbral_VCs, umbral_Ds;

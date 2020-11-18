@@ -60,7 +60,7 @@ module VC1_fifo #(
                      wr_ptr <= wr_ptr+1;
                 end
 
-                else if (rd_enable == 1) begin
+                if (rd_enable == 1) begin
                      data_out_VC1 <= mem[rd_ptr];
                      rd_ptr <= rd_ptr+1;
                 end
