@@ -20,7 +20,7 @@ module logica_pops(input VC0_empty, VC1_empty, full_fifo_D0, full_fifo_D1, almos
 
     always@(*) begin
         if (reset_L) begin 
-            if(~(almost_full_fifo_D0 || full_fifo_D0 || almost_full_fifo_D0 || full_fifo_D1)) begin
+            if(~(almost_full_fifo_D0 || full_fifo_D0 || almost_full_fifo_D1 || full_fifo_D1)) begin
                 if(~VC1_empty && VC0_empty) VC1_pop = 1;
                 else VC1_pop = 0;
 

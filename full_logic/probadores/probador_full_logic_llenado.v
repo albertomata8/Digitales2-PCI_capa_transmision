@@ -70,7 +70,7 @@ initial begin
 
 
 
-	repeat (15) begin
+	repeat (8) begin
 		@(posedge clk);
 		data_in <= 6'b100101;
 		@(posedge clk);
@@ -78,16 +78,24 @@ initial begin
 		@(posedge clk);
 		data_in <= 6'b101110;
 	end
+
+	@(posedge clk);
+	data_in <= 6'b000101;
+
+	@(posedge clk);
+	data_in <= 6'b110100;
+
+	@(posedge clk);
+	data_in <= 6'b110100;
 	
 	@(posedge clk);
-	data_in <= 6'b100010;
+	wr_enable <= 0;
 	D0_pop <= 1;
 	D1_pop <= 1;
 
 	@(posedge clk);
-	data_in <= 6'b100011;
 
-	repeat (10) begin
+	repeat (40) begin
 		@(posedge clk);
 	end
 
