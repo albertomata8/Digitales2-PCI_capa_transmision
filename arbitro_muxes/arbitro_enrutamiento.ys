@@ -1,0 +1,13 @@
+read_verilog ./arbitro_muxes/arbitro_enrutamiento.v
+
+proc; opt; memory; opt; fsm; opt;
+
+techmap; opt;
+
+dfflibmap -liberty ./lib/cmos_cells.lib
+
+abc -liberty ./lib/cmos_cells.lib
+
+clean
+
+write_verilog ./arbitro_muxes/arbitro_enrutamiento_synth.v
