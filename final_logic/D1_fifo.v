@@ -31,6 +31,7 @@ module D1_fifo #(
 
     integer i;
 
+
 // WRITE //
     always @(posedge clk) begin
        if (reset_L == 0 || init == 0) begin

@@ -2096,13 +2096,13 @@ endmodule
 (* dynports =  1  *)
 (* src = "./final_logic_synth/D1_fifo_synth.v:1" *)
 module D1_fifo_synth(clk, reset_L, wr_enable, rd_enable, init, data_in, Umbral_D1, full_fifo_D1, empty_fifo_D1_synth, almost_full_fifo_D1, almost_empty_fifo_D1_synth, error_D1_synth, data_out_D1_synth);
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   wire [2:0] _000_;
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   wire [5:0] _001_;
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   wire [1:0] _002_;
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   wire [1:0] _003_;
   wire _004_;
   wire _005_;
@@ -4056,67 +4056,67 @@ module D1_fifo_synth(clk, reset_L, wr_enable, rd_enable, init, data_in, Umbral_D
     .D(_009_),
     .Q(\mem[0] [5])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _628_ (
     .C(clk),
     .D(_003_[0]),
     .Q(wr_ptr[0])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _629_ (
     .C(clk),
     .D(_003_[1]),
     .Q(wr_ptr[1])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _630_ (
     .C(clk),
     .D(_000_[0]),
     .Q(cnt[0])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _631_ (
     .C(clk),
     .D(_000_[1]),
     .Q(cnt[1])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _632_ (
     .C(clk),
     .D(_000_[2]),
     .Q(cnt[2])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _633_ (
     .C(clk),
     .D(_001_[0]),
     .Q(data_out_D1_synth[0])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _634_ (
     .C(clk),
     .D(_001_[1]),
     .Q(data_out_D1_synth[1])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _635_ (
     .C(clk),
     .D(_001_[2]),
     .Q(data_out_D1_synth[2])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _636_ (
     .C(clk),
     .D(_001_[3]),
     .Q(data_out_D1_synth[3])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _637_ (
     .C(clk),
     .D(_001_[4]),
     .Q(data_out_D1_synth[4])
   );
-  (* src = "./final_logic_synth/D1_fifo_synth.v:35" *)
+  (* src = "./final_logic_synth/D1_fifo_synth.v:36" *)
   DFF _638_ (
     .C(clk),
     .D(_001_[5]),

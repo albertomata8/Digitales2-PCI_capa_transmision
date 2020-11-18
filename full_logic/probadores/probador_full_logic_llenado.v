@@ -22,7 +22,7 @@ module probador_full_logic#(
             );
 
 initial begin
-	$dumpfile("prueba_full_logic.vcd");
+	$dumpfile("prueba_full_llenado.vcd");
 	$dumpvars;
 
 	{wr_enable, reset} <= 0;
@@ -40,18 +40,18 @@ initial begin
     @(posedge clk);
     wr_enable <= 1;
 	reset <= 1;
-	data_in <= 6'b000000;
+	data_in <= 6'b001000;
 
 	@(posedge clk);
-	data_in <= 6'b000101;
+	data_in <= 6'b010101;
 
 	@(posedge clk);
 	init<=1;
-	data_in <= 6'b010100;
+	data_in <= 6'b000100;
 /////////////
 	@(posedge clk);
     wr_enable <= 1;
-	data_in <= 6'b000110;
+	data_in <= 6'b010110;
 
 	@(posedge clk);
 	data_in <= 6'b010100;
@@ -66,17 +66,17 @@ initial begin
 	data_in <= 6'b000101;
 
 	@(posedge clk);
-	data_in <= 6'b010100;
+	data_in <= 6'b110100;
 
 
 
-	repeat (13) begin
+	repeat (15) begin
 		@(posedge clk);
-		data_in <= 6'b000101;
+		data_in <= 6'b100101;
 		@(posedge clk);
 		data_in <= 6'b010110;
 		@(posedge clk);
-		data_in <= 6'b001110;
+		data_in <= 6'b101110;
 	end
 	
 	@(posedge clk);

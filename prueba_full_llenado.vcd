@@ -1,5 +1,5 @@
 $date
-	Wed Nov 18 11:40:45 2020
+	Wed Nov 18 12:02:11 2020
 $end
 $version
 	Icarus Verilog
@@ -18,7 +18,7 @@ $var wire 1 % R $end
 $var wire 1 & S $end
 $var reg 1 ' Q $end
 $upscope $end
-$scope module banco_full_logic $end
+$scope module banco_full_logic_llenado $end
 $var wire 1 ( wr_enable $end
 $var wire 4 ) umbral_VCs [3:0] $end
 $var wire 4 * umbral_MFs [3:0] $end

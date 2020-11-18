@@ -34,7 +34,7 @@ arbitro:
 	vvp bancopruebas_arbitro
 	gtkwave arbitro.vcd
 
-full_logic_make:
+full_logic_llenado:
 	yosys -s $(FULL)full_logic.ys
 	sed -i 's/data_out_D0/data_out_D0_synth/g' $(FULL)full_logic_synth.v
 	sed -i 's/data_out_D1/data_out_D1_synth/g' $(FULL)full_logic_synth.v
@@ -62,7 +62,7 @@ full_logic_make:
 	sed -i 's/error_D0/error_D0_synth/g' $(FULL)full_logic_synth.v
 	sed -i 's/error_D1/error_D1_synth/g' $(FULL)full_logic_synth.v
 	sed -i 's/retraso1/retraso1_synth/g' $(FULL)full_logic_synth.v
-	iverilog -o $(FULL)prueba $(FULL)banco_full_logic.v
+	iverilog -o $(FULL)prueba $(FULL)bancos/banco_full_logic_llenado.v
 	vvp $(FULL)prueba
-	gtkwave prueba_full_logic.vcd
+	gtkwave prueba_full_llenado.vcd
 	#rm $(FULL)prueba prueba_full_logic.vcd
