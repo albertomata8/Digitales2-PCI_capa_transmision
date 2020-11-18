@@ -7,6 +7,9 @@ module arbitro_mux(input reset_L, clk,
 					output reg [5:0] arbitro_D0_out, arbitro_D1_out, 
 					output reg D0_push, D1_push);
 
+	reg empty_reg_VC0, empty_reg_VC1;
+
+
 	always@(posedge clk) begin
 		if(~reset_L) begin
 			arbitro_D0_out <= 0;
@@ -15,7 +18,9 @@ module arbitro_mux(input reset_L, clk,
 			D1_push <= 0;
 		end
 		else begin
-			if (~VC0_empty ) begin
+			empty_reg_VC0 <= VC0_empty;
+			empty_reg_VC1 <= VC1_empty;
+			if (~VC0_empty || ~empty_reg_VC0) begin
 				if(pop_delay_VC0 ) begin
 					if(!almost_full_fifo_D0 || !almost_full_fifo_D1 || !full_fifo_D0 || !full_fifo_D1)begin
 						if (VC0[4] == 0) begin
@@ -40,7 +45,7 @@ module arbitro_mux(input reset_L, clk,
 					D1_push <= 0;
 				end
 			end
-			else if (~VC1_empty ) begin
+			else if (~VC1_empty || ~empty_reg_VC1) begin
 				if(pop_delay_VC1  ) begin
 					if (!almost_full_fifo_D0 || !almost_full_fifo_D1 || !full_fifo_D0 || !full_fifo_D1) begin
 						if (VC1[4] == 0) begin 

@@ -31,7 +31,7 @@ initial begin
     D1_pop <= 0;
 	init<=0;
 	umbral_MFs [3:0] <= 1 ;
-    umbral_VCs [3:0] <= 2 ;
+    umbral_VCs [3:0] <= 3 ;
     umbral_Ds  [3:0] <= 2 ;
 
 	@(posedge clk);
@@ -55,6 +55,9 @@ initial begin
 
 	@(posedge clk);
 	data_in <= 6'b010100;
+	umbral_MFs [3:0] <= 1111 ;
+    umbral_VCs [3:0] <= 1101 ;
+    umbral_Ds  [3:0] <= 1110 ;
 
 	@(posedge clk);
 	data_in <= 6'b000101;

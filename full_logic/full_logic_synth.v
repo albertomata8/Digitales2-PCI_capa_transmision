@@ -16953,15 +16953,17 @@ endmodule
 
 (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:1" *)
 module arbitro_mux_synth(reset_L, clk, VC0, VC1, pop_delay_VC0, pop_delay_VC1, almost_full_fifo_D0, almost_full_fifo_D1, full_fifo_D0, full_fifo_D1, VC0_empty, VC1_empty, arbitro_D0_out, arbitro_D1_out, D0_push, D1_push);
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire _000_;
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire _001_;
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire [5:0] _002_;
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire [5:0] _003_;
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire _004_;
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
   wire _005_;
   wire _006_;
   wire _007_;
@@ -17076,6 +17078,16 @@ module arbitro_mux_synth(reset_L, clk, VC0, VC1, pop_delay_VC0, pop_delay_VC1, a
   wire _116_;
   wire _117_;
   wire _118_;
+  wire _119_;
+  wire _120_;
+  wire _121_;
+  wire _122_;
+  wire _123_;
+  wire _124_;
+  wire _125_;
+  wire _126_;
+  wire _127_;
+  wire _128_;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:8" *)
   output D0_push;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:8" *)
@@ -17098,6 +17110,10 @@ module arbitro_mux_synth(reset_L, clk, VC0, VC1, pop_delay_VC0, pop_delay_VC1, a
   output [5:0] arbitro_D1_out;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:1" *)
   input clk;
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  wire empty_reg_VC0;
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
+  wire empty_reg_VC1;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:5" *)
   input full_fifo_D0;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:5" *)
@@ -17108,714 +17124,774 @@ module arbitro_mux_synth(reset_L, clk, VC0, VC1, pop_delay_VC0, pop_delay_VC1, a
   input pop_delay_VC1;
   (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:1" *)
   input reset_L;
-  NOT _119_ (
-    .A(pop_delay_VC1),
-    .Y(_070_)
-  );
-  NOT _120_ (
-    .A(pop_delay_VC0),
-    .Y(_071_)
-  );
-  NOT _121_ (
-    .A(VC0[4]),
-    .Y(_072_)
-  );
-  NOT _122_ (
-    .A(VC0_empty),
-    .Y(_073_)
-  );
-  NOT _123_ (
-    .A(reset_L),
-    .Y(_074_)
-  );
-  NOT _124_ (
-    .A(VC1[0]),
-    .Y(_075_)
-  );
-  NOT _125_ (
-    .A(VC1[1]),
-    .Y(_076_)
-  );
-  NOT _126_ (
-    .A(VC1[2]),
-    .Y(_077_)
-  );
-  NOT _127_ (
-    .A(VC1[3]),
-    .Y(_078_)
-  );
-  NOT _128_ (
-    .A(VC1[5]),
-    .Y(_079_)
-  );
   NOT _129_ (
-    .A(VC0[0]),
-    .Y(_080_)
-  );
-  NOR _130_ (
-    .A(_071_),
-    .B(VC0_empty),
-    .Y(_081_)
-  );
-  NAND _131_ (
-    .A(pop_delay_VC0),
-    .B(_073_),
-    .Y(_082_)
-  );
-  NOR _132_ (
-    .A(_070_),
-    .B(VC1_empty),
-    .Y(_083_)
-  );
-  NAND _133_ (
-    .A(pop_delay_VC1),
-    .B(VC0_empty),
-    .Y(_084_)
-  );
-  NOR _134_ (
-    .A(VC1_empty),
-    .B(_084_),
-    .Y(_085_)
-  );
-  NAND _135_ (
-    .A(VC0_empty),
-    .B(_083_),
+    .A(reset_L),
     .Y(_086_)
   );
-  NOR _136_ (
-    .A(_081_),
-    .B(_085_),
+  NOT _130_ (
+    .A(VC1[4]),
     .Y(_087_)
   );
-  NOT _137_ (
-    .A(_087_),
+  NOT _131_ (
+    .A(pop_delay_VC0),
     .Y(_088_)
   );
-  NAND _138_ (
-    .A(almost_full_fifo_D1),
-    .B(full_fifo_D0),
+  NOT _132_ (
+    .A(VC0[4]),
     .Y(_089_)
   );
-  NOT _139_ (
-    .A(_089_),
+  NOT _133_ (
+    .A(VC1[1]),
     .Y(_090_)
   );
-  NAND _140_ (
-    .A(full_fifo_D1),
-    .B(almost_full_fifo_D0),
+  NOT _134_ (
+    .A(VC1[2]),
     .Y(_091_)
   );
-  NOT _141_ (
-    .A(_091_),
+  NOT _135_ (
+    .A(VC1[3]),
     .Y(_092_)
   );
-  NOR _142_ (
-    .A(_089_),
-    .B(_091_),
+  NAND _136_ (
+    .A(VC0_empty),
+    .B(reset_L),
     .Y(_093_)
   );
-  NAND _143_ (
-    .A(_090_),
-    .B(_092_),
+  NAND _137_ (
+    .A(empty_reg_VC0),
+    .B(_086_),
     .Y(_094_)
   );
-  NAND _144_ (
-    .A(D1_push),
-    .B(_093_),
+  NAND _138_ (
+    .A(_093_),
+    .B(_094_),
+    .Y(_004_)
+  );
+  NAND _139_ (
+    .A(reset_L),
+    .B(VC1_empty),
     .Y(_095_)
   );
-  NOR _145_ (
-    .A(_087_),
-    .B(_095_),
+  NAND _140_ (
+    .A(_086_),
+    .B(empty_reg_VC1),
     .Y(_096_)
   );
-  NOR _146_ (
-    .A(_072_),
-    .B(_093_),
+  NAND _141_ (
+    .A(_095_),
+    .B(_096_),
+    .Y(_005_)
+  );
+  NAND _142_ (
+    .A(empty_reg_VC0),
+    .B(VC0_empty),
     .Y(_097_)
   );
-  NOT _147_ (
+  NOT _143_ (
     .A(_097_),
     .Y(_098_)
   );
-  NOR _148_ (
-    .A(_082_),
-    .B(_098_),
+  NAND _144_ (
+    .A(empty_reg_VC1),
+    .B(VC1_empty),
     .Y(_099_)
   );
-  NAND _149_ (
-    .A(_081_),
-    .B(_097_),
+  NAND _145_ (
+    .A(pop_delay_VC1),
+    .B(_099_),
     .Y(_100_)
   );
-  NAND _150_ (
-    .A(VC1[4]),
-    .B(_094_),
+  NOR _146_ (
+    .A(_097_),
+    .B(_100_),
     .Y(_101_)
   );
-  NOR _151_ (
-    .A(_086_),
-    .B(_101_),
+  NOT _147_ (
+    .A(_101_),
     .Y(_102_)
   );
-  NOR _152_ (
-    .A(_096_),
-    .B(_102_),
+  NAND _148_ (
+    .A(almost_full_fifo_D1),
+    .B(full_fifo_D0),
     .Y(_103_)
   );
-  NAND _153_ (
-    .A(_100_),
-    .B(_103_),
+  NOT _149_ (
+    .A(_103_),
     .Y(_104_)
   );
-  NAND _154_ (
-    .A(reset_L),
-    .B(_104_),
+  NAND _150_ (
+    .A(full_fifo_D1),
+    .B(almost_full_fifo_D0),
     .Y(_105_)
   );
-  NOT _155_ (
+  NOT _151_ (
     .A(_105_),
-    .Y(_001_)
-  );
-  NOR _156_ (
-    .A(_074_),
-    .B(_087_),
     .Y(_106_)
   );
-  NAND _157_ (
-    .A(reset_L),
-    .B(_088_),
+  NOR _152_ (
+    .A(_103_),
+    .B(_105_),
     .Y(_107_)
   );
-  NAND _158_ (
-    .A(D0_push),
-    .B(_093_),
+  NAND _153_ (
+    .A(_104_),
+    .B(_106_),
     .Y(_108_)
   );
-  NOT _159_ (
-    .A(_108_),
+  NAND _154_ (
+    .A(VC1[4]),
+    .B(_108_),
     .Y(_109_)
   );
-  NOR _160_ (
-    .A(VC0[4]),
-    .B(_093_),
+  NOR _155_ (
+    .A(_102_),
+    .B(_109_),
     .Y(_110_)
   );
-  NAND _161_ (
-    .A(_072_),
-    .B(_094_),
+  NAND _156_ (
+    .A(VC0[4]),
+    .B(_108_),
     .Y(_111_)
   );
-  NOR _162_ (
-    .A(_085_),
-    .B(_110_),
+  NOR _157_ (
+    .A(_088_),
+    .B(_098_),
     .Y(_112_)
   );
-  NOR _163_ (
-    .A(VC1[4]),
-    .B(_093_),
+  NAND _158_ (
+    .A(pop_delay_VC0),
+    .B(_097_),
     .Y(_113_)
   );
-  NAND _164_ (
-    .A(_081_),
-    .B(_110_),
+  NOR _159_ (
+    .A(_111_),
+    .B(_113_),
     .Y(_114_)
   );
-  NOT _165_ (
-    .A(_114_),
+  NOR _160_ (
+    .A(_110_),
+    .B(_114_),
     .Y(_115_)
   );
-  NOR _166_ (
-    .A(_113_),
-    .B(_115_),
+  NOT _161_ (
+    .A(_115_),
     .Y(_116_)
   );
-  NOR _167_ (
-    .A(_112_),
+  NAND _162_ (
+    .A(reset_L),
     .B(_116_),
     .Y(_117_)
   );
-  NOR _168_ (
-    .A(_109_),
-    .B(_117_),
+  NOR _163_ (
+    .A(_101_),
+    .B(_112_),
     .Y(_118_)
   );
-  NOR _169_ (
-    .A(_107_),
-    .B(_118_),
-    .Y(_000_)
+  NOT _164_ (
+    .A(_118_),
+    .Y(_119_)
   );
-  NOR _170_ (
-    .A(_075_),
-    .B(_086_),
-    .Y(_004_)
+  NAND _165_ (
+    .A(reset_L),
+    .B(_119_),
+    .Y(_120_)
   );
-  NAND _171_ (
-    .A(VC1[0]),
-    .B(_102_),
-    .Y(_005_)
+  NAND _166_ (
+    .A(D1_push),
+    .B(_107_),
+    .Y(_121_)
   );
-  NOR _172_ (
-    .A(_080_),
-    .B(_100_),
-    .Y(_006_)
+  NOR _167_ (
+    .A(_120_),
+    .B(_121_),
+    .Y(_122_)
+  );
+  NOT _168_ (
+    .A(_122_),
+    .Y(_123_)
+  );
+  NAND _169_ (
+    .A(_117_),
+    .B(_123_),
+    .Y(_001_)
+  );
+  NAND _170_ (
+    .A(D0_push),
+    .B(_107_),
+    .Y(_124_)
+  );
+  NOR _171_ (
+    .A(VC1[4]),
+    .B(_107_),
+    .Y(_125_)
+  );
+  NAND _172_ (
+    .A(_087_),
+    .B(_108_),
+    .Y(_126_)
   );
   NAND _173_ (
-    .A(arbitro_D1_out[0]),
-    .B(_093_),
+    .A(_113_),
+    .B(_126_),
+    .Y(_127_)
+  );
+  NAND _174_ (
+    .A(_089_),
+    .B(_108_),
+    .Y(_128_)
+  );
+  NAND _175_ (
+    .A(_101_),
+    .B(_125_),
+    .Y(_006_)
+  );
+  NAND _176_ (
+    .A(_128_),
+    .B(_006_),
     .Y(_007_)
   );
-  NOR _174_ (
-    .A(_087_),
+  NAND _177_ (
+    .A(_127_),
     .B(_007_),
     .Y(_008_)
   );
-  NOR _175_ (
-    .A(_006_),
+  NAND _178_ (
+    .A(_124_),
     .B(_008_),
     .Y(_009_)
   );
-  NAND _176_ (
-    .A(_005_),
-    .B(_009_),
+  NOT _179_ (
+    .A(_009_),
     .Y(_010_)
   );
-  NAND _177_ (
-    .A(reset_L),
+  NOR _180_ (
+    .A(_120_),
     .B(_010_),
-    .Y(_011_)
-  );
-  NOT _178_ (
-    .A(_011_),
-    .Y(_003_[0])
-  );
-  NOR _179_ (
-    .A(_094_),
-    .B(_107_),
-    .Y(_012_)
-  );
-  NAND _180_ (
-    .A(arbitro_D1_out[1]),
-    .B(_012_),
-    .Y(_013_)
+    .Y(_000_)
   );
   NOR _181_ (
-    .A(_076_),
-    .B(_086_),
-    .Y(_014_)
+    .A(_108_),
+    .B(_120_),
+    .Y(_011_)
   );
   NAND _182_ (
-    .A(VC1[1]),
-    .B(_102_),
-    .Y(_015_)
+    .A(arbitro_D1_out[0]),
+    .B(_011_),
+    .Y(_012_)
   );
   NAND _183_ (
-    .A(VC0[1]),
-    .B(_099_),
-    .Y(_016_)
+    .A(reset_L),
+    .B(VC1[0]),
+    .Y(_013_)
   );
   NAND _184_ (
-    .A(_015_),
+    .A(VC1[0]),
+    .B(_110_),
+    .Y(_014_)
+  );
+  NAND _185_ (
+    .A(VC0[0]),
+    .B(_114_),
+    .Y(_015_)
+  );
+  NAND _186_ (
+    .A(_014_),
+    .B(_015_),
+    .Y(_016_)
+  );
+  NAND _187_ (
+    .A(reset_L),
     .B(_016_),
     .Y(_017_)
   );
-  NAND _185_ (
-    .A(reset_L),
-    .B(_017_),
-    .Y(_018_)
-  );
-  NAND _186_ (
-    .A(_013_),
-    .B(_018_),
-    .Y(_003_[1])
-  );
-  NOR _187_ (
-    .A(_077_),
-    .B(_086_),
-    .Y(_019_)
-  );
   NAND _188_ (
-    .A(VC1[2]),
-    .B(_102_),
-    .Y(_020_)
+    .A(_012_),
+    .B(_017_),
+    .Y(_003_[0])
   );
   NAND _189_ (
-    .A(VC0[2]),
-    .B(_099_),
-    .Y(_021_)
+    .A(VC0[1]),
+    .B(_114_),
+    .Y(_018_)
   );
   NAND _190_ (
-    .A(_020_),
-    .B(_021_),
-    .Y(_022_)
+    .A(VC1[1]),
+    .B(_110_),
+    .Y(_019_)
   );
   NAND _191_ (
-    .A(reset_L),
-    .B(_022_),
-    .Y(_023_)
+    .A(_018_),
+    .B(_019_),
+    .Y(_020_)
   );
   NAND _192_ (
-    .A(arbitro_D1_out[2]),
-    .B(_012_),
-    .Y(_024_)
+    .A(reset_L),
+    .B(_020_),
+    .Y(_021_)
   );
   NAND _193_ (
-    .A(_023_),
-    .B(_024_),
-    .Y(_003_[2])
+    .A(arbitro_D1_out[1]),
+    .B(_011_),
+    .Y(_022_)
   );
   NAND _194_ (
-    .A(arbitro_D1_out[3]),
-    .B(_012_),
-    .Y(_025_)
+    .A(_021_),
+    .B(_022_),
+    .Y(_003_[1])
   );
-  NOR _195_ (
-    .A(_078_),
-    .B(_086_),
-    .Y(_026_)
+  NAND _195_ (
+    .A(VC0[2]),
+    .B(_114_),
+    .Y(_023_)
   );
   NAND _196_ (
-    .A(VC1[3]),
-    .B(_102_),
-    .Y(_027_)
+    .A(arbitro_D1_out[2]),
+    .B(_107_),
+    .Y(_024_)
   );
-  NAND _197_ (
-    .A(VC0[3]),
-    .B(_099_),
-    .Y(_028_)
+  NOR _197_ (
+    .A(_118_),
+    .B(_024_),
+    .Y(_025_)
   );
   NAND _198_ (
-    .A(_027_),
-    .B(_028_),
-    .Y(_029_)
+    .A(VC1[2]),
+    .B(_110_),
+    .Y(_026_)
   );
   NAND _199_ (
-    .A(reset_L),
-    .B(_029_),
-    .Y(_030_)
+    .A(_023_),
+    .B(_026_),
+    .Y(_027_)
   );
-  NAND _200_ (
+  NOR _200_ (
     .A(_025_),
-    .B(_030_),
-    .Y(_003_[3])
+    .B(_027_),
+    .Y(_028_)
   );
-  NAND _201_ (
-    .A(arbitro_D1_out[4]),
-    .B(_012_),
-    .Y(_031_)
+  NOR _201_ (
+    .A(_086_),
+    .B(_028_),
+    .Y(_003_[2])
   );
   NAND _202_ (
-    .A(_100_),
-    .B(_101_),
-    .Y(_032_)
+    .A(VC0[3]),
+    .B(_114_),
+    .Y(_029_)
   );
-  NOR _203_ (
-    .A(_085_),
-    .B(_097_),
-    .Y(_033_)
+  NAND _203_ (
+    .A(arbitro_D1_out[3]),
+    .B(_107_),
+    .Y(_030_)
   );
   NOR _204_ (
-    .A(_107_),
+    .A(_118_),
+    .B(_030_),
+    .Y(_031_)
+  );
+  NAND _205_ (
+    .A(VC1[3]),
+    .B(_110_),
+    .Y(_032_)
+  );
+  NAND _206_ (
+    .A(_029_),
+    .B(_032_),
+    .Y(_033_)
+  );
+  NOR _207_ (
+    .A(_031_),
     .B(_033_),
     .Y(_034_)
   );
-  NAND _205_ (
-    .A(_032_),
+  NOR _208_ (
+    .A(_086_),
     .B(_034_),
+    .Y(_003_[3])
+  );
+  NOR _209_ (
+    .A(VC1[4]),
+    .B(_112_),
     .Y(_035_)
   );
-  NAND _206_ (
-    .A(_031_),
+  NOR _210_ (
+    .A(_111_),
     .B(_035_),
-    .Y(_003_[4])
-  );
-  NAND _207_ (
-    .A(VC1[5]),
-    .B(_102_),
     .Y(_036_)
   );
-  NAND _208_ (
-    .A(VC0[5]),
-    .B(_099_),
+  NOT _211_ (
+    .A(_036_),
     .Y(_037_)
   );
-  NAND _209_ (
-    .A(_036_),
-    .B(_037_),
+  NAND _212_ (
+    .A(arbitro_D1_out[4]),
+    .B(_107_),
     .Y(_038_)
   );
-  NAND _210_ (
-    .A(reset_L),
+  NAND _213_ (
+    .A(_037_),
     .B(_038_),
     .Y(_039_)
   );
-  NAND _211_ (
-    .A(arbitro_D1_out[5]),
-    .B(_012_),
+  NOR _214_ (
+    .A(_110_),
+    .B(_039_),
     .Y(_040_)
   );
-  NAND _212_ (
-    .A(_039_),
+  NOR _215_ (
+    .A(_120_),
     .B(_040_),
-    .Y(_003_[5])
-  );
-  NOR _213_ (
-    .A(_074_),
-    .B(_114_),
-    .Y(_041_)
-  );
-  NAND _214_ (
-    .A(VC0[0]),
-    .B(_041_),
-    .Y(_042_)
-  );
-  NAND _215_ (
-    .A(_113_),
-    .B(_004_),
-    .Y(_043_)
+    .Y(_003_[4])
   );
   NAND _216_ (
-    .A(arbitro_D0_out[0]),
-    .B(_093_),
-    .Y(_044_)
+    .A(VC1[5]),
+    .B(_110_),
+    .Y(_041_)
   );
   NAND _217_ (
-    .A(_043_),
-    .B(_044_),
-    .Y(_045_)
+    .A(VC0[5]),
+    .B(_114_),
+    .Y(_042_)
   );
   NAND _218_ (
-    .A(_106_),
-    .B(_045_),
-    .Y(_046_)
+    .A(_041_),
+    .B(_042_),
+    .Y(_043_)
   );
   NAND _219_ (
-    .A(_042_),
-    .B(_046_),
-    .Y(_002_[0])
+    .A(reset_L),
+    .B(_043_),
+    .Y(_044_)
   );
   NAND _220_ (
-    .A(VC0[1]),
-    .B(_041_),
-    .Y(_047_)
+    .A(arbitro_D1_out[5]),
+    .B(_011_),
+    .Y(_045_)
   );
   NAND _221_ (
-    .A(_113_),
-    .B(_014_),
-    .Y(_048_)
+    .A(_044_),
+    .B(_045_),
+    .Y(_003_[5])
   );
-  NAND _222_ (
-    .A(arbitro_D0_out[1]),
-    .B(_093_),
-    .Y(_049_)
+  NOR _222_ (
+    .A(_006_),
+    .B(_013_),
+    .Y(_046_)
   );
   NAND _223_ (
-    .A(_048_),
+    .A(arbitro_D0_out[0]),
+    .B(_107_),
+    .Y(_047_)
+  );
+  NOT _224_ (
+    .A(_047_),
+    .Y(_048_)
+  );
+  NAND _225_ (
+    .A(VC0[0]),
+    .B(_112_),
+    .Y(_049_)
+  );
+  NOR _226_ (
+    .A(_128_),
     .B(_049_),
     .Y(_050_)
   );
-  NAND _224_ (
-    .A(_106_),
+  NOR _227_ (
+    .A(_048_),
     .B(_050_),
     .Y(_051_)
   );
-  NAND _225_ (
-    .A(_047_),
+  NOR _228_ (
+    .A(_120_),
     .B(_051_),
-    .Y(_002_[1])
-  );
-  NAND _226_ (
-    .A(VC0[2]),
-    .B(_041_),
     .Y(_052_)
   );
-  NAND _227_ (
-    .A(_113_),
-    .B(_019_),
+  NOR _229_ (
+    .A(_046_),
+    .B(_052_),
     .Y(_053_)
   );
-  NAND _228_ (
-    .A(arbitro_D0_out[2]),
-    .B(_093_),
+  NOT _230_ (
+    .A(_053_),
+    .Y(_002_[0])
+  );
+  NOR _231_ (
+    .A(_090_),
+    .B(_006_),
     .Y(_054_)
   );
-  NAND _229_ (
-    .A(_053_),
-    .B(_054_),
+  NAND _232_ (
+    .A(arbitro_D0_out[1]),
+    .B(_107_),
     .Y(_055_)
   );
-  NAND _230_ (
-    .A(_106_),
-    .B(_055_),
+  NOT _233_ (
+    .A(_055_),
     .Y(_056_)
   );
-  NAND _231_ (
-    .A(_052_),
-    .B(_056_),
-    .Y(_002_[2])
-  );
-  NAND _232_ (
-    .A(VC0[3]),
-    .B(_041_),
+  NAND _234_ (
+    .A(VC0[1]),
+    .B(_112_),
     .Y(_057_)
   );
-  NAND _233_ (
-    .A(_113_),
-    .B(_026_),
+  NOR _235_ (
+    .A(_128_),
+    .B(_057_),
     .Y(_058_)
   );
-  NAND _234_ (
-    .A(arbitro_D0_out[3]),
-    .B(_093_),
+  NOR _236_ (
+    .A(_056_),
+    .B(_058_),
     .Y(_059_)
   );
-  NAND _235_ (
-    .A(_058_),
+  NOR _237_ (
+    .A(_118_),
     .B(_059_),
     .Y(_060_)
   );
-  NAND _236_ (
-    .A(_106_),
+  NOR _238_ (
+    .A(_054_),
     .B(_060_),
     .Y(_061_)
   );
-  NAND _237_ (
-    .A(_057_),
+  NOR _239_ (
+    .A(_086_),
     .B(_061_),
-    .Y(_002_[3])
+    .Y(_002_[1])
   );
-  NAND _238_ (
-    .A(arbitro_D0_out[4]),
-    .B(_012_),
+  NOR _240_ (
+    .A(_091_),
+    .B(_006_),
     .Y(_062_)
   );
-  NOT _239_ (
-    .A(_062_),
-    .Y(_002_[4])
-  );
-  NAND _240_ (
-    .A(_073_),
-    .B(VC0[5]),
+  NAND _241_ (
+    .A(arbitro_D0_out[2]),
+    .B(_107_),
     .Y(_063_)
   );
-  NOR _241_ (
-    .A(_111_),
-    .B(_063_),
+  NOT _242_ (
+    .A(_063_),
     .Y(_064_)
   );
-  NAND _242_ (
-    .A(arbitro_D0_out[5]),
-    .B(_093_),
+  NAND _243_ (
+    .A(VC0[2]),
+    .B(_112_),
     .Y(_065_)
   );
-  NOR _243_ (
-    .A(_073_),
-    .B(_079_),
+  NOR _244_ (
+    .A(_128_),
+    .B(_065_),
     .Y(_066_)
   );
-  NAND _244_ (
-    .A(_113_),
+  NOR _245_ (
+    .A(_064_),
     .B(_066_),
     .Y(_067_)
   );
-  NAND _245_ (
-    .A(_065_),
+  NOR _246_ (
+    .A(_118_),
     .B(_067_),
     .Y(_068_)
   );
-  NOR _246_ (
-    .A(_064_),
+  NOR _247_ (
+    .A(_062_),
     .B(_068_),
     .Y(_069_)
   );
-  NOR _247_ (
-    .A(_107_),
+  NOR _248_ (
+    .A(_086_),
     .B(_069_),
+    .Y(_002_[2])
+  );
+  NOR _249_ (
+    .A(_092_),
+    .B(_006_),
+    .Y(_070_)
+  );
+  NAND _250_ (
+    .A(arbitro_D0_out[3]),
+    .B(_107_),
+    .Y(_071_)
+  );
+  NOT _251_ (
+    .A(_071_),
+    .Y(_072_)
+  );
+  NAND _252_ (
+    .A(VC0[3]),
+    .B(_112_),
+    .Y(_073_)
+  );
+  NOR _253_ (
+    .A(_128_),
+    .B(_073_),
+    .Y(_074_)
+  );
+  NOR _254_ (
+    .A(_072_),
+    .B(_074_),
+    .Y(_075_)
+  );
+  NOR _255_ (
+    .A(_118_),
+    .B(_075_),
+    .Y(_076_)
+  );
+  NOR _256_ (
+    .A(_070_),
+    .B(_076_),
+    .Y(_077_)
+  );
+  NOR _257_ (
+    .A(_086_),
+    .B(_077_),
+    .Y(_002_[3])
+  );
+  NAND _258_ (
+    .A(arbitro_D0_out[4]),
+    .B(_011_),
+    .Y(_078_)
+  );
+  NOT _259_ (
+    .A(_078_),
+    .Y(_002_[4])
+  );
+  NAND _260_ (
+    .A(VC0[5]),
+    .B(_097_),
+    .Y(_079_)
+  );
+  NOR _261_ (
+    .A(_128_),
+    .B(_079_),
+    .Y(_080_)
+  );
+  NAND _262_ (
+    .A(arbitro_D0_out[5]),
+    .B(_107_),
+    .Y(_081_)
+  );
+  NOR _263_ (
+    .A(_097_),
+    .B(_126_),
+    .Y(_082_)
+  );
+  NAND _264_ (
+    .A(VC1[5]),
+    .B(_082_),
+    .Y(_083_)
+  );
+  NAND _265_ (
+    .A(_081_),
+    .B(_083_),
+    .Y(_084_)
+  );
+  NOR _266_ (
+    .A(_080_),
+    .B(_084_),
+    .Y(_085_)
+  );
+  NOR _267_ (
+    .A(_120_),
+    .B(_085_),
     .Y(_002_[5])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _248_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _268_ (
     .C(clk),
     .D(_002_[0]),
     .Q(arbitro_D0_out[0])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _249_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _269_ (
     .C(clk),
     .D(_002_[1]),
     .Q(arbitro_D0_out[1])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _250_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _270_ (
     .C(clk),
     .D(_002_[2]),
     .Q(arbitro_D0_out[2])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _251_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _271_ (
     .C(clk),
     .D(_002_[3]),
     .Q(arbitro_D0_out[3])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _252_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _272_ (
     .C(clk),
     .D(_002_[4]),
     .Q(arbitro_D0_out[4])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _253_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _273_ (
     .C(clk),
     .D(_002_[5]),
     .Q(arbitro_D0_out[5])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _254_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _274_ (
     .C(clk),
     .D(_003_[0]),
     .Q(arbitro_D1_out[0])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _255_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _275_ (
     .C(clk),
     .D(_003_[1]),
     .Q(arbitro_D1_out[1])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _256_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _276_ (
     .C(clk),
     .D(_003_[2]),
     .Q(arbitro_D1_out[2])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _257_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _277_ (
     .C(clk),
     .D(_003_[3]),
     .Q(arbitro_D1_out[3])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _258_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _278_ (
     .C(clk),
     .D(_003_[4]),
     .Q(arbitro_D1_out[4])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _259_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _279_ (
     .C(clk),
     .D(_003_[5]),
     .Q(arbitro_D1_out[5])
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _260_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _280_ (
     .C(clk),
     .D(_000_),
     .Q(D0_push)
   );
-  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:10" *)
-  DFF _261_ (
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _281_ (
     .C(clk),
     .D(_001_),
     .Q(D1_push)
+  );
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _282_ (
+    .C(clk),
+    .D(_004_),
+    .Q(empty_reg_VC0)
+  );
+  (* src = "./arbitro_mux_synthes/arbitro_mux_synth.v:13" *)
+  DFF _283_ (
+    .C(clk),
+    .D(_005_),
+    .Q(empty_reg_VC1)
   );
 endmodule
 
