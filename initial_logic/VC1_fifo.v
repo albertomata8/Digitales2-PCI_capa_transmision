@@ -86,6 +86,7 @@ module VC1_fifo #(
             end
             if (wr_enable && ~rd_enable && ~full_fifo_VC1_reg) cnt <= cnt+1'b1;
             else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
+            else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1;
 
             data_arbitro_VC1 <= mem[rd_ptr];
         end

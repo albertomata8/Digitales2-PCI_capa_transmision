@@ -31,7 +31,7 @@ initial begin
     D1_pop <= 0;
   init<=0;
   umbral_MFs [3:0] <= 1 ;
-    umbral_VCs [3:0] <= 1 ;
+    umbral_VCs [3:0] <= 2 ;
     umbral_Ds  [3:0] <= 2 ;
 
   @(posedge clk);
@@ -70,7 +70,7 @@ initial begin
 
 
 
-  repeat (13) begin
+  repeat (5) begin
     @(posedge clk);
     data_in <= 6'b000101;
     @(posedge clk);
@@ -81,15 +81,20 @@ initial begin
   
   @(posedge clk);
   data_in <= 6'b000010;
-  D0_pop <= 1;
-  D1_pop <= 1;
+  //D0_pop <= 1;
+  //D1_pop <= 1;
 
   @(posedge clk);
   data_in <= 6'b000011;
 
-  repeat (10) begin
-    @(posedge clk);
-  end
+  @(posedge clk);
+  data_in <= 6'b000010;
+  //D0_pop <= 1;
+  //D1_pop <= 1;
+
+  @(posedge clk);
+  data_in <= 6'b000011;
+
 
 
   $finish;

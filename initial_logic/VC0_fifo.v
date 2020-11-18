@@ -86,8 +86,10 @@ module VC0_fifo #(
                      cnt <= cnt-1;
                  end
             end
+            
             if (wr_enable && ~rd_enable && ~full_fifo_VC0_reg) cnt <= cnt+1'b1;
             else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
+            else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1;
 
 
             data_arbitro_VC0 <= mem[rd_ptr]; //Se saca el siguiente dato para ver si es neceario pushearlo al arbitro
