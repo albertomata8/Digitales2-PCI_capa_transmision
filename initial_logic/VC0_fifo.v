@@ -6,11 +6,11 @@ module VC0_fifo #(
             input clk, reset, wr_enable, rd_enable,
             input [data_width-1:0] data_in, init,
             input [3:0] Umbral_VC0,
-            output full_fifo_VC0,
-            output empty_fifo_VC0,
-            output almost_full_fifo_VC0,
-            output almost_empty_fifo_VC0,
-            output error_VC0,
+            output reg full_fifo_VC0,
+            output reg empty_fifo_VC0,
+            output reg almost_full_fifo_VC0,
+            output reg almost_empty_fifo_VC0,
+            output reg error_VC0,
             output reg [data_width-1:0] data_out_VC0,
             output reg [data_width-1:0] data_arbitro_VC0
             );
@@ -24,11 +24,23 @@ module VC0_fifo #(
 
     integer i;
 
-    assign full_fifo_VC0 = (cnt == size_fifo);
-    assign empty_fifo_VC0 = (cnt == 0);  
-    assign error_VC0 = (cnt > size_fifo);
-    assign almost_empty_fifo_VC0 = (cnt == Umbral_VC0);
-    assign almost_full_fifo_VC0 = (cnt == size_fifo-Umbral_VC0);
+    always@(*)begin
+        if (reset == 0 || init == 0) begin
+            full_fifo_VC0 = 0;
+            empty_fifo_VC0 = 1;
+            error_VC0 = 0;
+            almost_empty_fifo_VC0 = 0;
+            almost_full_fifo_VC0 = 0;
+        end
+        else begin
+            full_fifo_VC0 = (cnt == size_fifo);
+            empty_fifo_VC0 = (cnt == 0);                          
+            error_VC0 = (cnt > size_fifo);                        
+            almost_empty_fifo_VC0 = (cnt == Umbral_VC0);         
+            almost_full_fifo_VC0 = (cnt >= size_fifo-Umbral_VC0 && cnt < size_fifo); 
+        end
+        
+    end         
     assign full_fifo_VC0_reg = full_fifo_VC0;
 
     always @(posedge clk) begin
