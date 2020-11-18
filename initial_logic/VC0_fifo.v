@@ -20,9 +20,11 @@ module VC0_fifo #(
     reg [address_width-1:0] wr_ptr;
     reg [address_width-1:0] rd_ptr;
     reg [address_width-1:0] cnt;
-    wire full_fifo_VC0_reg;
+    wire full_fifo_VC0_reg, empty_reg;
+    assign  empty_reg = empty_fifo_VC0;
 
     integer i;
+
 
     always@(*)begin
         if (reset == 0 || init == 0) begin
@@ -60,11 +62,13 @@ module VC0_fifo #(
                      wr_ptr <= wr_ptr+1;
                 end
 
-                if (rd_enable == 1) begin
-                     data_out_VC0 <= mem[rd_ptr];
-                     rd_ptr <= rd_ptr+1;
+                if(~empty_reg) begin 
+                    if (rd_enable == 1) begin
+                         data_out_VC0 <= mem[rd_ptr];
+                         rd_ptr <= rd_ptr+1;
+                    end
+                    else data_out_VC0 <=0;
                 end
-                else data_out_VC0 <=0;
                 
                 //case ({wr_enable, rd_enable})
                 //    2'b00: cnt <= cnt;
@@ -83,7 +87,7 @@ module VC0_fifo #(
                  end
             end
             if (wr_enable && ~rd_enable && ~full_fifo_VC0_reg) cnt <= cnt+1'b1;
-            else if (~wr_enable && rd_enable) cnt <= cnt-1'b1;
+            else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
 
 
             data_arbitro_VC0 <= mem[rd_ptr]; //Se saca el siguiente dato para ver si es neceario pushearlo al arbitro

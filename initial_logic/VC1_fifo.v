@@ -20,7 +20,8 @@ module VC1_fifo #(
     reg [address_width-1:0] wr_ptr;
     reg [address_width-1:0] rd_ptr;
     reg [address_width-1:0] cnt;
-    wire full_fifo_VC1_reg;
+    wire full_fifo_VC1_reg, empty_reg;
+    assign  empty_reg = empty_fifo_VC1;
 
     integer i;
     
@@ -60,11 +61,13 @@ module VC1_fifo #(
                      wr_ptr <= wr_ptr+1;
                 end
 
-                if (rd_enable == 1) begin
-                     data_out_VC1 <= mem[rd_ptr];
-                     rd_ptr <= rd_ptr+1;
+                if (~empty_reg) begin
+                    if (rd_enable == 1) begin
+                         data_out_VC1 <= mem[rd_ptr];
+                         rd_ptr <= rd_ptr+1;
+                    end
+                    else data_out_VC1 <=0;
                 end
-                else data_out_VC1 <=0;
 
                 //case ({wr_enable, rd_enable})
                 //    2'b00: cnt <= cnt;
@@ -82,7 +85,7 @@ module VC1_fifo #(
                  end
             end
             if (wr_enable && ~rd_enable && ~full_fifo_VC1_reg) cnt <= cnt+1'b1;
-            else if (~wr_enable && rd_enable) cnt <= cnt-1'b1;
+            else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
 
             data_arbitro_VC1 <= mem[rd_ptr];
         end

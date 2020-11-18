@@ -20,7 +20,7 @@ module D1_fifo #(
     reg [address_width-1:0] rd_ptr;
     reg [address_width:0] cnt;
 
-    wire full_fifo_D1_reg;
+    wire full_fifo_D1_reg, empty_reg;
 
     always@(*)begin
         if (reset_L == 0 || init == 0) begin
@@ -40,6 +40,7 @@ module D1_fifo #(
         
     end         
     assign  full_fifo_D1_reg = full_fifo_D1;
+    assign empty_reg = empty_fifo_D1;
 
     integer i;
 
@@ -62,19 +63,22 @@ module D1_fifo #(
                      wr_ptr <= wr_ptr+1;
                 end
 
-                if (rd_enable == 1) begin
-                     data_out_D1 <= mem[rd_ptr];
-                     rd_ptr <= rd_ptr+1;
+                if (~empty_reg) begin
+                    if (rd_enable == 1) begin
+                         data_out_D1 <= mem[rd_ptr];
+                         rd_ptr <= rd_ptr+1;
+                    end
+                    else data_out_D1 <=0;
                 end
-                else data_out_D1 <=0;
+                else data_out_D1 <= 0;
 
-                case ({wr_enable, rd_enable})
-                    2'b00: cnt <= cnt;
-                    2'b01: cnt <= cnt-1;
-                    2'b10: cnt <= cnt+1;
-                    2'b11: cnt <= cnt;
-                    default: cnt <= cnt;
-                endcase
+                //case ({wr_enable, rd_enable})
+                //    2'b00: cnt <= cnt;
+                //    2'b01: if (~empty_reg) cnt <= cnt-1;
+                //    2'b10: cnt <= cnt+1;
+                //    2'b11: cnt <= cnt;
+                //    default: cnt <= cnt;
+                //endcase
             end
             if (reset_L == 1 && init == 1 && full_fifo_D1_reg) begin
                  if (rd_enable == 1) begin
@@ -83,6 +87,9 @@ module D1_fifo #(
                      cnt <= cnt-1;
                  end
             end
+            if (wr_enable && ~rd_enable && ~full_fifo_D1_reg) cnt <= cnt+1'b1;
+            else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
+            else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1; 
         end
     end
        

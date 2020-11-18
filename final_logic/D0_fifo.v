@@ -19,7 +19,7 @@ module D0_fifo #(
     reg [address_width-1:0] wr_ptr;
     reg [address_width-1:0] rd_ptr;
     reg [address_width:0] cnt;
-    wire full_fifo_D0_reg;
+    wire full_fifo_D0_reg, empty_reg;
 
     always@(*)begin
         if (reset_L == 0 || init == 0) begin
@@ -39,6 +39,7 @@ module D0_fifo #(
         
     end         
     assign  full_fifo_D0_reg = full_fifo_D0;
+    assign empty_reg = empty_fifo_D0;
     integer i;
 
 
@@ -55,25 +56,28 @@ module D0_fifo #(
 			end
        end
         else begin
-            if (reset_L == 1 && init == 1 && ~full_fifo_D0_reg) begin
+            if (reset_L == 1 && init == 1 && ~full_fifo_D0_reg ) begin
                 if (wr_enable == 1) begin
                      mem[wr_ptr] <= data_in;
                      wr_ptr <= wr_ptr+1;
                 end
 
-                if (rd_enable == 1) begin
-                     data_out_D0 <= mem[rd_ptr];
-                     rd_ptr <= rd_ptr+1;
+                if(~empty_reg) begin 
+                    if (rd_enable == 1) begin
+                         data_out_D0 <= mem[rd_ptr];
+                         rd_ptr <= rd_ptr+1;
+                    end 
+                    else data_out_D0 <=0;
                 end
-                else data_out_D0 <=0;
+                else data_out_D0 <= 0;
 
-                case ({wr_enable, rd_enable})
-                    2'b00: cnt <= cnt;
-                    2'b01: cnt <= cnt-1;
-                    2'b10: cnt <= cnt+1;
-                    2'b11: cnt <= cnt;
-                    default: cnt <= cnt;
-                endcase
+                //case ({wr_enable, rd_enable})
+                //    2'b00: cnt <= cnt;
+                //    2'b01: if (~empty_reg) cnt <= cnt-1;
+                //    2'b10: cnt <= cnt+1;
+                //    2'b11: cnt <= cnt;
+                //    default: cnt <= cnt;
+                //endcase
             end
             if (reset_L == 1 && init == 1 && full_fifo_D0_reg) begin
                  if (rd_enable == 1) begin
@@ -82,6 +86,9 @@ module D0_fifo #(
                      cnt <= cnt-1;
                  end
             end
+            if (wr_enable && ~rd_enable && ~full_fifo_D0_reg) cnt <= cnt+1'b1;
+            else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
+            else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1; 
         end
     end
   
