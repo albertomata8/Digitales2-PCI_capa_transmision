@@ -1,0 +1,13 @@
+read_verilog ./final_logic/final_logic.v
+
+proc; opt; memory; opt; fsm; opt;
+
+techmap; opt;
+
+dfflibmap -liberty ./lib/cmos_cells.lib
+
+abc -liberty ./lib/cmos_cells.lib
+
+clean
+
+write_verilog ./final_logic/final_logic_synth.v

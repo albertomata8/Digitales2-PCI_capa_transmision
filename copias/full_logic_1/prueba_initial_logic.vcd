@@ -1,0 +1,903 @@
+$date
+	Tue Nov 10 16:49:16 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module banco_full_logic $end
+$var wire 1 ! wr_enable $end
+$var wire 1 " reset $end
+$var wire 1 # error_D1 $end
+$var wire 1 $ error_D0 $end
+$var wire 6 % data_out_D1 [5:0] $end
+$var wire 6 & data_out_D0 [5:0] $end
+$var wire 6 ' data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 ) D1_pop $end
+$var wire 1 * D0_pop $end
+$scope module full_logic_cond $end
+$var wire 1 ! wr_enable $end
+$var wire 1 " reset $end
+$var wire 1 + pop_VC1_fifo $end
+$var wire 1 , pop_VC0_fifo $end
+$var wire 1 - full_fifo_VC1 $end
+$var wire 1 . full_fifo_VC0 $end
+$var wire 1 / error_VC1 $end
+$var wire 1 0 error_VC0 $end
+$var wire 1 # error_D1 $end
+$var wire 1 $ error_D0 $end
+$var wire 1 1 empty_fifo_VC1 $end
+$var wire 1 2 empty_fifo_VC0 $end
+$var wire 6 3 data_out_VC1 [5:0] $end
+$var wire 6 4 data_out_VC0 [5:0] $end
+$var wire 6 5 data_out_D1 [5:0] $end
+$var wire 6 6 data_out_D0 [5:0] $end
+$var wire 6 7 data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 8 almost_full_fifo_VC1 $end
+$var wire 1 9 almost_full_fifo_VC0 $end
+$var wire 1 : almost_empty_fifo_VC1 $end
+$var wire 1 ; almost_empty_fifo_VC0 $end
+$var wire 1 ) D1_pop $end
+$var wire 1 * D0_pop $end
+$scope module final_logic_1 $end
+$var wire 1 " reset_L $end
+$var wire 1 + pop_VC1_fifo $end
+$var wire 1 , pop_VC0_fifo $end
+$var wire 1 < fulloralmostfull_D1 $end
+$var wire 1 = fulloralmostfull_D0 $end
+$var wire 1 > full_fifo_D1 $end
+$var wire 1 ? full_fifo_D0 $end
+$var wire 1 # error_D1 $end
+$var wire 1 $ error_D0 $end
+$var wire 1 1 empty_fifo_VC1 $end
+$var wire 1 2 empty_fifo_VC0 $end
+$var wire 1 @ empty_fifo_D1 $end
+$var wire 1 A empty_fifo_D0 $end
+$var wire 6 B data_out_VC1 [5:0] $end
+$var wire 6 C data_out_VC0 [5:0] $end
+$var wire 6 D data_out_D1 [5:0] $end
+$var wire 6 E data_out_D0 [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 F almost_empty_fifo_D1 $end
+$var wire 1 G almost_empty_fifo_D0 $end
+$var wire 1 H D1_push $end
+$var wire 1 ) D1_pop $end
+$var wire 6 I D1_out [5:0] $end
+$var wire 1 J D0_push $end
+$var wire 1 * D0_pop $end
+$var wire 6 K D0_out [5:0] $end
+$scope module u_D0_fifo $end
+$var wire 1 J wr_enable $end
+$var wire 1 " reset_L $end
+$var wire 1 * rd_enable $end
+$var wire 1 ? full_fifo_D0 $end
+$var wire 1 $ error_D0 $end
+$var wire 1 A empty_fifo_D0 $end
+$var wire 6 L data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 = almost_full_fifo_D0 $end
+$var wire 1 G almost_empty_fifo_D0 $end
+$var reg 3 M cnt [2:0] $end
+$var reg 6 N data_out_D0 [5:0] $end
+$var reg 2 O rd_ptr [1:0] $end
+$var reg 2 P wr_ptr [1:0] $end
+$var integer 32 Q i [31:0] $end
+$upscope $end
+$scope module u_D1_fifo $end
+$var wire 1 H wr_enable $end
+$var wire 1 " reset_L $end
+$var wire 1 ) rd_enable $end
+$var wire 1 > full_fifo_D1 $end
+$var wire 1 # error_D1 $end
+$var wire 1 @ empty_fifo_D1 $end
+$var wire 6 R data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 < almost_full_fifo_D1 $end
+$var wire 1 F almost_empty_fifo_D1 $end
+$var reg 3 S cnt [2:0] $end
+$var reg 6 T data_out_D1 [5:0] $end
+$var reg 2 U rd_ptr [1:0] $end
+$var reg 2 V wr_ptr [1:0] $end
+$var integer 32 W i [31:0] $end
+$upscope $end
+$scope module u_arbitro_enrutamiento $end
+$var wire 1 = D0_pause $end
+$var wire 1 < D1_pause $end
+$var wire 1 " reset_L $end
+$var wire 1 X pop_delay_VC1 $end
+$var wire 1 Y pop_delay_VC0 $end
+$var wire 1 ( clk $end
+$var wire 1 + VC1_pop $end
+$var wire 1 1 VC1_empty $end
+$var wire 6 Z VC1 [5:0] $end
+$var wire 1 , VC0_pop $end
+$var wire 1 2 VC0_empty $end
+$var wire 6 [ VC0 [5:0] $end
+$var wire 1 H D1_push $end
+$var wire 6 \ D1_out [5:0] $end
+$var wire 1 J D0_push $end
+$var wire 6 ] D0_out [5:0] $end
+$scope module u_arbitro_muxes $end
+$var wire 1 " reset_L $end
+$var wire 1 X pop_delay_VC1 $end
+$var wire 1 Y pop_delay_VC0 $end
+$var wire 1 ( clk $end
+$var wire 1 1 VC1_empty $end
+$var wire 6 ^ VC1 [5:0] $end
+$var wire 1 2 VC0_empty $end
+$var wire 6 _ VC0 [5:0] $end
+$var reg 6 ` D0_out [5:0] $end
+$var reg 1 J D0_push $end
+$var reg 6 a D1_out [5:0] $end
+$var reg 1 H D1_push $end
+$upscope $end
+$scope module u_logica_pops $end
+$var wire 1 = D0_pause $end
+$var wire 1 < D1_pause $end
+$var wire 1 " reset_L $end
+$var wire 1 ( clk $end
+$var wire 1 1 VC1_empty $end
+$var wire 1 2 VC0_empty $end
+$var reg 1 , VC0_pop $end
+$var reg 1 + VC1_pop $end
+$var reg 1 Y pop_delay_VC0 $end
+$var reg 1 X pop_delay_VC1 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module initial_logic_1 $end
+$var wire 1 , pop_VC0_fifo $end
+$var wire 1 + pop_VC1_fifo $end
+$var wire 1 ! wr_enable $end
+$var wire 1 b valid_pop_out $end
+$var wire 1 " reset $end
+$var wire 1 c push_vc1 $end
+$var wire 1 d push_vc0 $end
+$var wire 1 e pop_main_fifo $end
+$var wire 1 - full_fifo_VC1 $end
+$var wire 1 . full_fifo_VC0 $end
+$var wire 1 f full_fifo $end
+$var wire 1 / error_VC1 $end
+$var wire 1 0 error_VC0 $end
+$var wire 1 g error $end
+$var wire 1 h empty_main_fifo $end
+$var wire 1 1 empty_fifo_VC1 $end
+$var wire 1 2 empty_fifo_VC0 $end
+$var wire 6 i data_out_demux_initial_vc1 [5:0] $end
+$var wire 6 j data_out_demux_initial_vc0 [5:0] $end
+$var wire 6 k data_out_VC1 [5:0] $end
+$var wire 6 l data_out_VC0 [5:0] $end
+$var wire 6 m data_in_demux_initial [5:0] $end
+$var wire 6 n data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 8 almost_full_fifo_VC1 $end
+$var wire 1 9 almost_full_fifo_VC0 $end
+$var wire 1 o almost_full_fifo $end
+$var wire 1 : almost_empty_fifo_VC1 $end
+$var wire 1 ; almost_empty_fifo_VC0 $end
+$var wire 1 p almost_empty_fifo $end
+$scope module comb_initial_1 $end
+$var wire 1 " reset $end
+$var wire 1 8 pause_vc1 $end
+$var wire 1 9 pause_vc0 $end
+$var wire 1 h empty_main_fifo $end
+$var wire 1 ( clk $end
+$var reg 1 e pop_main_fifo $end
+$var reg 1 b valid_pop_out $end
+$upscope $end
+$scope module demux_initial_1 $end
+$var wire 1 b valid_pop_out $end
+$var wire 1 " reset $end
+$var wire 6 q data_in_demux_initial [5:0] $end
+$var wire 1 ( clk $end
+$var reg 6 r data_out_demux_initial_vc0 [5:0] $end
+$var reg 6 s data_out_demux_initial_vc1 [5:0] $end
+$var reg 1 d push_vc0 $end
+$var reg 1 c push_vc1 $end
+$upscope $end
+$scope module fifo_VC0 $end
+$var wire 6 t data_in [5:0] $end
+$var wire 1 , rd_enable $end
+$var wire 1 d wr_enable $end
+$var wire 1 " reset $end
+$var wire 1 . full_fifo_VC0 $end
+$var wire 1 0 error_VC0 $end
+$var wire 1 2 empty_fifo_VC0 $end
+$var wire 1 ( clk $end
+$var wire 1 9 almost_full_fifo_VC0 $end
+$var wire 1 ; almost_empty_fifo_VC0 $end
+$var reg 3 u cnt [2:0] $end
+$var reg 6 v data_out_VC0 [5:0] $end
+$var reg 2 w rd_ptr [1:0] $end
+$var reg 2 x wr_ptr [1:0] $end
+$upscope $end
+$scope module fifo_VC1 $end
+$var wire 6 y data_in [5:0] $end
+$var wire 1 + rd_enable $end
+$var wire 1 c wr_enable $end
+$var wire 1 " reset $end
+$var wire 1 - full_fifo_VC1 $end
+$var wire 1 / error_VC1 $end
+$var wire 1 1 empty_fifo_VC1 $end
+$var wire 1 ( clk $end
+$var wire 1 8 almost_full_fifo_VC1 $end
+$var wire 1 : almost_empty_fifo_VC1 $end
+$var reg 3 z cnt [2:0] $end
+$var reg 6 { data_out_VC1 [5:0] $end
+$var reg 2 | rd_ptr [1:0] $end
+$var reg 2 } wr_ptr [1:0] $end
+$upscope $end
+$scope module fifo_main $end
+$var wire 1 e rd_enable $end
+$var wire 1 ! wr_enable $end
+$var wire 1 " reset $end
+$var wire 1 f full_fifo $end
+$var wire 1 g error $end
+$var wire 1 h empty_fifo $end
+$var wire 6 ~ data_in [5:0] $end
+$var wire 1 ( clk $end
+$var wire 1 o almost_full_fifo $end
+$var wire 1 p almost_empty_fifo $end
+$var reg 3 !" cnt [2:0] $end
+$var reg 6 "" data_out [5:0] $end
+$var reg 2 #" rd_ptr [1:0] $end
+$var reg 2 $" wr_ptr [1:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module probador_full_logic_1 $end
+$var wire 6 %" data_out_D0 [5:0] $end
+$var wire 6 &" data_out_D1 [5:0] $end
+$var wire 1 $ error_D0 $end
+$var wire 1 # error_D1 $end
+$var reg 1 * D0_pop $end
+$var reg 1 ) D1_pop $end
+$var reg 1 ( clk $end
+$var reg 6 '" data_in [5:0] $end
+$var reg 1 " reset $end
+$var reg 1 ! wr_enable $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 '"
+b0 &"
+b0 %"
+b0 $"
+b0 #"
+b0 ""
+b0 !"
+b0 ~
+b0 }
+b0 |
+b0 {
+b0 z
+b0 y
+b0 x
+b0 w
+b0 v
+b0 u
+b0 t
+b0 s
+b0 r
+b0 q
+0p
+0o
+b0 n
+b0 m
+b0 l
+b0 k
+b0 j
+b0 i
+1h
+0g
+0f
+0e
+0d
+0c
+0b
+b0 a
+b0 `
+b0 _
+b0 ^
+b0 ]
+b0 \
+b0 [
+b0 Z
+0Y
+0X
+b100 W
+b0 V
+b0 U
+b0 T
+b0 S
+b0 R
+b100 Q
+b0 P
+b0 O
+b0 N
+b0 M
+b0 L
+b0 K
+0J
+b0 I
+0H
+0G
+0F
+b0 E
+b0 D
+b0 C
+b0 B
+1A
+1@
+0?
+0>
+0=
+0<
+0;
+0:
+09
+08
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+12
+11
+00
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+1(
+b0 '
+b0 &
+b0 %
+0$
+0#
+0"
+0!
+$end
+#1
+0(
+#2
+b100 W
+b100 Q
+1(
+#3
+0(
+#4
+b100 Q
+b100 W
+1(
+#5
+0(
+#6
+b1 '
+b1 7
+b1 n
+b1 ~
+b1 '"
+1"
+1!
+b100 W
+b100 Q
+1(
+#7
+0(
+#8
+1e
+b1 $"
+0h
+1p
+b1 !"
+b10 '
+b10 7
+b10 n
+b10 ~
+b10 '"
+1(
+#9
+0(
+#10
+b11 '
+b11 7
+b11 n
+b11 ~
+b11 '"
+1b
+b1 #"
+b1 m
+b1 q
+b1 ""
+b10 $"
+1(
+#11
+0(
+#12
+b11 $"
+b10 #"
+b10 m
+b10 q
+b10 ""
+1d
+b1 j
+b1 r
+b1 t
+b100 '
+b100 7
+b100 n
+b100 ~
+b100 '"
+1(
+#13
+0(
+#14
+1,
+b100001 '
+b100001 7
+b100001 n
+b100001 ~
+b100001 '"
+02
+1;
+b1 u
+b1 x
+b10 j
+b10 r
+b10 t
+b11 #"
+b11 m
+b11 q
+b11 ""
+b0 $"
+1(
+#15
+0(
+#16
+b1 $"
+b0 #"
+b100 m
+b100 q
+b100 ""
+b11 j
+b11 r
+b11 t
+b10 x
+b1 w
+b1 4
+b1 C
+b1 [
+b1 _
+b1 l
+b1 v
+1Y
+b100010 '
+b100010 7
+b100010 n
+b100010 ~
+b100010 '"
+1(
+#17
+0(
+#18
+b100011 '
+b100011 7
+b100011 n
+b100011 ~
+b100011 '"
+1J
+b1 K
+b1 L
+b1 ]
+b1 `
+b10 w
+b10 4
+b10 C
+b10 [
+b10 _
+b10 l
+b10 v
+b11 x
+b100 j
+b100 r
+b100 t
+b1 #"
+b100001 m
+b100001 q
+b100001 ""
+b10 $"
+1(
+#19
+0(
+#20
+b11 $"
+b10 #"
+b100010 m
+b100010 q
+b100010 ""
+0d
+1c
+b0 j
+b0 r
+b0 t
+b100001 i
+b100001 s
+b100001 y
+b0 x
+b11 w
+b11 4
+b11 C
+b11 [
+b11 _
+b11 l
+b11 v
+b10 K
+b10 L
+b10 ]
+b10 `
+b1 P
+0A
+1G
+b1 M
+1)
+1*
+b100100 '
+b100100 7
+b100100 n
+b100100 ~
+b100100 '"
+1(
+#21
+0(
+#22
+0,
+1+
+0@
+1#
+b111 S
+b1 U
+b1 O
+b1 &
+b1 6
+b1 E
+b1 N
+b1 %"
+b10 P
+b11 K
+b11 L
+b11 ]
+b11 `
+01
+1:
+b1 z
+b1 }
+12
+0;
+b0 u
+b0 w
+b100 4
+b100 C
+b100 [
+b100 _
+b100 l
+b100 v
+b100010 i
+b100010 s
+b100010 y
+b11 #"
+b100011 m
+b100011 q
+b100011 ""
+b0 $"
+1(
+#23
+0(
+#24
+b1 $"
+b0 #"
+b100100 m
+b100100 q
+b100100 ""
+b100011 i
+b100011 s
+b100011 y
+b0 4
+b0 C
+b0 [
+b0 _
+b0 l
+b0 v
+b10 }
+b1 |
+b100001 3
+b100001 B
+b100001 Z
+b100001 ^
+b100001 k
+b100001 {
+0J
+b0 K
+b0 L
+b0 ]
+b0 `
+1X
+0Y
+b11 P
+b10 O
+b10 &
+b10 6
+b10 E
+b10 N
+b10 %"
+b10 U
+b110 S
+1(
+#25
+0(
+#26
+0!
+b101 S
+b11 U
+1A
+0G
+b0 M
+b11 O
+b11 &
+b11 6
+b11 E
+b11 N
+b11 %"
+1J
+b100001 K
+b100001 L
+b100001 ]
+b100001 `
+b10 |
+b100010 3
+b100010 B
+b100010 Z
+b100010 ^
+b100010 k
+b100010 {
+b11 }
+b100100 i
+b100100 s
+b100100 y
+b1 #"
+b10 $"
+1(
+#27
+0(
+#28
+0e
+b10 #"
+1h
+0p
+b0 !"
+b0 }
+b11 |
+b100011 3
+b100011 B
+b100011 Z
+b100011 ^
+b100011 k
+b100011 {
+b100010 K
+b100010 L
+b100010 ]
+b100010 `
+b0 P
+b0 O
+b0 &
+b0 6
+b0 E
+b0 N
+b0 %"
+b0 U
+1>
+0#
+b100 S
+1(
+#29
+0(
+#30
+0+
+0>
+1<
+b11 S
+b1 U
+b1 O
+b1 &
+b1 6
+b1 E
+b1 N
+b1 %"
+b1 P
+b100011 K
+b100011 L
+b100011 ]
+b100011 `
+b0 |
+b100100 3
+b100100 B
+b100100 Z
+b100100 ^
+b100100 k
+b100100 {
+b1 }
+0b
+b0 m
+b0 q
+b0 ""
+1(
+#31
+0(
+#32
+1+
+0c
+b0 i
+b0 s
+b0 y
+b10 }
+b0 3
+b0 B
+b0 Z
+b0 ^
+b0 k
+b0 {
+0:
+b10 z
+b100100 K
+b100100 L
+b100100 ]
+b100100 `
+0X
+b10 P
+b10 O
+b10 &
+b10 6
+b10 E
+b10 N
+b10 %"
+b10 U
+0<
+b10 S
+1(
+#33
+0(
+#34
+1F
+b1 S
+b11 U
+b11 O
+b11 &
+b11 6
+b11 E
+b11 N
+b11 %"
+b11 P
+1X
+0J
+b0 K
+b0 L
+b0 ]
+b0 `
+1:
+b1 z
+b1 |
+b100100 3
+b100100 B
+b100100 Z
+b100100 ^
+b100100 k
+b100100 {
+1(
+#35
+0(
+#36
+0+
+b10 |
+11
+0:
+b0 z
+1J
+b100100 K
+b100100 L
+b100100 ]
+b100100 `
+b0 O
+b100001 &
+b100001 6
+b100001 E
+b100001 N
+b100001 %"
+0A
+1$
+b111 M
+b0 U
+1@
+0F
+b0 S
+1(
+#37
+0(
+#38
+0@
+1#
+b111 S
+b1 U
+b1 O
+b100010 &
+b100010 6
+b100010 E
+b100010 N
+b100010 %"
+b0 P
+0X
+0J
+b0 K
+b0 L
+b0 ]
+b0 `
+b0 3
+b0 B
+b0 Z
+b0 ^
+b0 k
+b0 {
+1(
+#39
+0(
+#40
+b10 O
+b100011 &
+b100011 6
+b100011 E
+b100011 N
+b100011 %"
+b110 M
+b10 U
+b110 S
+1(
+#41
+0(
+#42
+0)
+0*
+b101 S
+b11 U
+b101 M
+b11 O
+b100100 &
+b100100 6
+b100100 E
+b100100 N
+b100100 %"
+1(
+#43
+0(
+#44
+b0 &
+b0 6
+b0 E
+b0 N
+b0 %"
+1(
+#45
+0(
+#46
+1(
+#47
+0(
+#48
+1(

@@ -1,0 +1,15 @@
+read_verilog initial_logic.v 
+
+hierarchy -check -top initial_logic
+
+proc; opt; memory; opt; fsm; opt;
+
+techmap; opt;
+
+dfflibmap -liberty ../lib/cmos_cells.lib
+
+abc -liberty ../lib/cmos_cells.lib
+
+clean
+
+write_verilog initial_logic_synth.v
