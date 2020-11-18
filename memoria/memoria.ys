@@ -1,0 +1,13 @@
+read_verilog memoria.v
+
+proc; opt; memory; opt; fsm; opt;
+
+techmap; opt;
+
+dfflibmap -liberty ../lib/cmos_cells.lib
+
+abc -liberty ../lib/cmos_cells.lib
+
+clean
+
+write_verilog memoria_synth.v
