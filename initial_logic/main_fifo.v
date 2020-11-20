@@ -24,14 +24,12 @@ module main_fifo #(
         if (reset == 0 || init == 0) begin
             full_fifo = 0;
             empty_fifo = 1;
-            error = 0;
             almost_empty_fifo = 0;
             almost_full_fifo = 0;
         end
         else begin
-            full_fifo = (cnt == size_fifo);
-            empty_fifo = (cnt == 0);                          
-            error = (cnt > size_fifo);                        
+            full_fifo = (cnt == size_fifo || cnt > size_fifo );
+            empty_fifo = (cnt == 0);                      
             almost_empty_fifo = (cnt == Umbral_Main);         
             almost_full_fifo = (cnt >= size_fifo-Umbral_Main && cnt < size_fifo); 
         end
@@ -47,6 +45,7 @@ module main_fifo #(
        		rd_ptr <= 4'b0;
             data_out <=0;
             cnt <= 0;
+            error <= 0;
             for(i = 0; i<2**address_width; i=i+1) begin
 				mem[i] <= 0;
 			end
@@ -72,6 +71,10 @@ module main_fifo #(
             end
             if (wr_enable && ~rd_enable && ~full_fifo_main_reg) cnt <= cnt+1'b1;
             else if (~wr_enable && rd_enable && ~empty_fifo) cnt <= cnt-1'b1;
+            if (full_fifo && wr_enable && !rd_enable) begin
+                error <= 1 ;
+            end
+
 
         end
     end

@@ -29,14 +29,12 @@ module VC1_fifo #(
         if (reset == 0 || init == 0) begin
             full_fifo_VC1 = 0;
             empty_fifo_VC1 = 1;
-            error_VC1 = 0;
             almost_empty_fifo_VC1 = 0;
             almost_full_fifo_VC1 = 0;
         end
         else begin
-            full_fifo_VC1 = (cnt == size_fifo);
+            full_fifo_VC1 = (cnt == size_fifo || cnt > size_fifo );
             empty_fifo_VC1 = (cnt == 0);                          
-            error_VC1 = (cnt > size_fifo);                        
             almost_empty_fifo_VC1 = (cnt == Umbral_VC1);         
             almost_full_fifo_VC1 = (cnt >= size_fifo-Umbral_VC1 && cnt < size_fifo); 
         end
@@ -50,6 +48,7 @@ module VC1_fifo #(
        		rd_ptr <= 4'b0;
             data_out_VC1 <=0;
             cnt <= 0;
+            error_VC1 <= 0;
             for(i = 0; i<2**address_width; i=i+1) begin
 				mem[i] <= 0;
 			end
@@ -87,7 +86,9 @@ module VC1_fifo #(
             if (wr_enable && ~rd_enable && ~full_fifo_VC1_reg) cnt <= cnt+1'b1;
             else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
             else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1;
-
+            if (full_fifo_VC1 && wr_enable && !rd_enable) begin
+                error_VC1 <= 1;
+            end
             data_arbitro_VC1 <= mem[rd_ptr];
         end
     end

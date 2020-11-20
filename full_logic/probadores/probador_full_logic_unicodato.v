@@ -91,9 +91,21 @@ initial begin
   data_in <= 6'b000010;
   //D0_pop <= 1;
   //D1_pop <= 1;
-
+  @(posedge clk);
+  @(posedge clk);
+  @(posedge clk);
+  @(posedge clk);
   @(posedge clk);
   data_in <= 6'b000011;
+  wr_enable <=0;
+  repeat (5) begin
+    @(posedge clk);
+    data_in <= 6'b000101;
+    @(posedge clk);
+    data_in <= 6'b000110;
+    @(posedge clk);
+    data_in <= 6'b001110;
+  end
 
 
 
