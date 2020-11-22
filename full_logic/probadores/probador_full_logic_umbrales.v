@@ -60,6 +60,8 @@ initial begin
     umbral_Ds  [3:0] <= 1110 ;
 
 	@(posedge clk);
+	init <= 0;
+	reset <= 0;
 	data_in <= 6'b000101;
 
 	@(posedge clk);
@@ -69,18 +71,9 @@ initial begin
 	data_in <= 6'b000101;
 
 	@(posedge clk);
+	reset <= 1;
 	data_in <= 6'b110100;
 
-
-
-	repeat (7) begin
-		@(posedge clk);
-		data_in <= 6'b100101;
-		@(posedge clk);
-		data_in <= 6'b010110;
-		@(posedge clk);
-		data_in <= 6'b101110;
-	end
 
 	@(posedge clk);
 	wr_enable <= 0;
@@ -90,6 +83,7 @@ initial begin
 	data_in <= 6'b110100;
 
 	@(posedge clk);
+	init <= 1;
 	data_in <= 6'b110100;
 	
 	@(posedge clk);
@@ -98,7 +92,7 @@ initial begin
 
 	@(posedge clk);
 
-	repeat (90) begin
+	repeat (10) begin
 		@(posedge clk);
 	end
 

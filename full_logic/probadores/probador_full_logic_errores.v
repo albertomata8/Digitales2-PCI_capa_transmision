@@ -22,7 +22,7 @@ module probador_full_logic#(
             );
 
 initial begin
-  $dumpfile("prueba_full_logic_trafico_unico_uno.vcd");
+  $dumpfile("prueba_full_logic_errores.vcd");
   $dumpvars;
 
   {wr_enable, reset} <= 0;
@@ -37,8 +37,8 @@ initial begin
   @(posedge clk);
   @(posedge clk);
   @(posedge clk);
-    @(posedge clk);
-    wr_enable <= 1;
+  @(posedge clk);
+  //wr_enable <= 1;
   reset <= 1;
   data_in <= 6'b110000;
 
@@ -47,29 +47,36 @@ initial begin
 
   @(posedge clk);
   init<=1;
-  data_in <= 6'b110100;
+  data_in <= 6'b111111;
 /////////////
   @(posedge clk);
-  wr_enable <= 1;
-  data_in <= 6'b110110;
+  //D0_pop = 1;
+  //D1_pop = 1;
+  //wr_enable <= 1;
 
   @(posedge clk);
+  @(posedge clk);
+  @(posedge clk);
   data_in <= 6'b110100;
+  reset <= 0;
+  init <= 0;
+
+  @(posedge clk);
+  @(posedge clk);
+  @(posedge clk);
+  reset <= 1;
 
   @(posedge clk);
   data_in <= 6'b110101;
 
   @(posedge clk);
-  data_in <= 6'b110100;
-  @(posedge clk);
-  data_in <= 6'b110101;
-
-  @(posedge clk);
+  init <= 1;
+  wr_enable = 1;
   data_in <= 6'b110100;
 
 
 
-  repeat (4) begin
+  repeat (8) begin
     @(posedge clk);
     data_in <= 6'b110101;
     @(posedge clk);
@@ -77,31 +84,14 @@ initial begin
     @(posedge clk);
     data_in <= 6'b111110;
   end
-
-  @(posedge clk);
-  data_in <= 6'b111001;
-
   
   @(posedge clk);
   data_in <= 6'b110010;
-
-  @(posedge clk);
-  data_in <= 6'b111111;
-
-  @(posedge clk);
-  data_in <= 6'b111011;
-
-  @(posedge clk);
-  data_in <= 6'b110111;
-
-  @(posedge clk);
-  wr_enable = 0;
   D0_pop <= 1;
   D1_pop <= 1;
-  data_in <= 6'b110001;
 
   @(posedge clk);
-  data_in <= 6'b110000;
+  data_in <= 6'b110011;
 
   repeat (10) begin
     @(posedge clk);

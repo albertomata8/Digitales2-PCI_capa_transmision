@@ -30,7 +30,7 @@ module main_fifo #(
         else begin
             full_fifo = (cnt == size_fifo || cnt > size_fifo );
             empty_fifo = (cnt == 0);                      
-            almost_empty_fifo = (cnt == Umbral_Main);         
+            almost_empty_fifo = (cnt <= Umbral_Main && cnt > 0);         
             almost_full_fifo = (cnt >= size_fifo-Umbral_Main && cnt < size_fifo); 
         end
         

@@ -3,8 +3,8 @@ module VC0_fifo #(
 			parameter address_width = 4
             )
             (
-            input clk, reset, wr_enable, rd_enable,
-            input [data_width-1:0] data_in, init,
+            input clk, reset, wr_enable, rd_enable, init,
+            input [data_width-1:0] data_in,
             input [3:0] Umbral_VC0,
             output reg full_fifo_VC0,
             output reg empty_fifo_VC0,
@@ -37,7 +37,7 @@ module VC0_fifo #(
             full_fifo_VC0 = (cnt == size_fifo || cnt > size_fifo );
             empty_fifo_VC0 = (cnt == 0);                          
                                    
-            almost_empty_fifo_VC0 = (cnt == Umbral_VC0);         
+            almost_empty_fifo_VC0 = (cnt <= Umbral_VC0 && cnt > 0);         
             almost_full_fifo_VC0 = (cnt >= size_fifo-Umbral_VC0 && cnt < size_fifo); 
         end
         

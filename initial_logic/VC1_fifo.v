@@ -35,7 +35,7 @@ module VC1_fifo #(
         else begin
             full_fifo_VC1 = (cnt == size_fifo || cnt > size_fifo );
             empty_fifo_VC1 = (cnt == 0);                          
-            almost_empty_fifo_VC1 = (cnt == Umbral_VC1);         
+            almost_empty_fifo_VC1 = (cnt <= Umbral_VC1 && cnt > 0);         
             almost_full_fifo_VC1 = (cnt >= size_fifo-Umbral_VC1 && cnt < size_fifo); 
         end
         

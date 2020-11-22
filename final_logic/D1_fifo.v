@@ -32,7 +32,7 @@ module D1_fifo #(
         else begin
             full_fifo_D1 = (cnt == size_fifo || cnt > size_fifo);
             empty_fifo_D1 = (cnt == 0);                                                  
-            almost_empty_fifo_D1 = (cnt == Umbral_D1);         
+            almost_empty_fifo_D1 = (cnt <= Umbral_D1 && cnt > 0);         
             almost_full_fifo_D1 = (cnt >= size_fifo-Umbral_D1 && cnt < size_fifo); 
         end
         
@@ -71,13 +71,6 @@ module D1_fifo #(
                 end
                 else data_out_D1 <= 0;
 
-                //case ({wr_enable, rd_enable})
-                //    2'b00: cnt <= cnt;
-                //    2'b01: if (~empty_reg) cnt <= cnt-1;
-                //    2'b10: cnt <= cnt+1;
-                //    2'b11: cnt <= cnt;
-                //    default: cnt <= cnt;
-                //endcase
             end
             if (reset_L == 1 && init == 1 && full_fifo_D1_reg) begin
                  if (rd_enable == 1) begin
@@ -90,6 +83,9 @@ module D1_fifo #(
             else if (~wr_enable && rd_enable && ~empty_reg) cnt <= cnt-1'b1;
             else if (wr_enable && rd_enable && empty_reg) cnt <= cnt+1'b1; 
             if (full_fifo_D1 && wr_enable && !rd_enable) begin
+                error_D1 <= 1;
+            end
+            else if (empty_reg && ~wr_enable && rd_enable) begin
                 error_D1 <= 1;
             end
         end
