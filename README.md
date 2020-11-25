@@ -27,7 +27,7 @@ Prueba único tipo de dato camino VC1 y D1
 make full_logic_unicodato_uno
 ~~~
 
-Prueba de umbrales
+Prueba único tipo de dato camino VC0 y D0
 ~~~
 make full_logic_umbrales
 ~~~
