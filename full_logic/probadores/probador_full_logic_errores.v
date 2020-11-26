@@ -50,14 +50,14 @@ initial begin
   data_in <= 6'b111111;
 /////////////
   @(posedge clk);
-  //D0_pop = 1;
-  //D1_pop = 1;
-  //wr_enable <= 1;
+  D0_pop = 1;
+  D1_pop = 1;
+  wr_enable <= 1;
 
   @(posedge clk);
   @(posedge clk);
   @(posedge clk);
-  data_in <= 6'b110100;
+  data_in <= 0;
   reset <= 0;
   init <= 0;
 
@@ -67,10 +67,12 @@ initial begin
   reset <= 1;
 
   @(posedge clk);
-  data_in <= 6'b110101;
+  data_in <= 0;
 
   @(posedge clk);
   init <= 1;
+  D0_pop = 0;
+  D1_pop = 0;
   wr_enable = 1;
   data_in <= 6'b110100;
 
